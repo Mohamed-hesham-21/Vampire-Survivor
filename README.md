@@ -113,7 +113,7 @@ I would like to extend my gratitude to the following resources and communities t
 - **[Pygame Documentation](https://www.pygame.org/docs/)**: For providing comprehensive documentation and tutorials that helped me understand how to use the Pygame library effectively.
 - **[Real Python](https://realpython.com/)**: For offering beginner-friendly and in-depth tutorials on Python and game development.
 - **[Clear Code's YouTube Channel](https://www.youtube.com/c/ClearCode)**: For their insightful Pygame tutorials, which were instrumental in learning game mechanics, animation, and collision handling.
-- **[ChatGPT](chatgpt.com)**: A special thanks to **ChatGPT** for helping me write this incredible README! 😊
+
 
 
 A special thanks to all the developers and open-source communities who share their knowledge and make learning more accessible!
