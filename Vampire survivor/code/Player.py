@@ -1,7 +1,7 @@
 from settings import *
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, pos, group, collision_sprites ):
+    def __init__(self, pos, group, collision_sprites):
         super().__init__(group)
         self.image = pygame.image.load('images/player/down/0.png')
         self.rect = self.image.get_frect(center = pos)
@@ -26,13 +26,13 @@ class Player(pygame.sprite.Sprite):
             for full_path, folder_name, file_names in walk(f'images/player/{state}'):
                 for file_name in sorted(file_names , key = lambda file : file[0]):
                     self.frames[state].append(pygame.image.load(str(full_path +'/'+ file_name)).convert_alpha())
+
     def animation(self, dt):
         # get state
         if self.direction.x !=0 :
             self.frame_state = 'right' if self.direction.x > 0  else 'left'
         if self.direction.y !=0 :
             self.frame_state = 'up' if self.direction.y < 0  else 'down'
-        
         
         # Animate   
         self.frame_index = dt * 5 + self.frame_index if self.direction else 0 
@@ -54,8 +54,6 @@ class Player(pygame.sprite.Sprite):
         self.collision(dimension, dt)
         self.rect.center = self.hit_box.center
 
-    
-    
     def collision(self, dimension , dt):
         for sprite in self.collision_sprites:
             if sprite.rect.colliderect(self.hit_box):
@@ -71,9 +69,13 @@ class Player(pygame.sprite.Sprite):
                     elif self.direction.y < 0 : # player moving up
                         self.hit_box.top = sprite.rect.bottom
                 return
-    
+
+    def destroy(self):
+        surf = pygame.mask.from_surface(self.image).to_surface()
+        surf.set_colorkey('black')
+        self.image = surf
+
     def update(self , dt):
         self.input()
         self.move(dt)
         self.animation(dt)
-
